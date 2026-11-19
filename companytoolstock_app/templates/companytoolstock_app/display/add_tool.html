@@ -1,0 +1,11 @@
+{% extends "toolroom_app/root/base.html" %}
+
+{% block content %}
+
+  <center><p>ADD TOOL</p>
+    <a href="{% url 'add_tool_to_stock' 'holder' %}">Holder</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="{% url 'add_tool_to_stock' 'collet' %}">Collet</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="{% url 'add_tool_to_stock' 'tool' %}">Tool</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </center>
+
+{% endblock content %}

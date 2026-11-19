@@ -1,0 +1,14 @@
+{% extends 'toolroom_app/root/base.html' %}
+
+{% block content %}
+<center><p>Seller {{ toolname|title }} tools</p>
+  {% if tool_type_list|length == 0 %}
+    <p> No {{ toolname }} tools available. </p>
+  {% else %}
+    {% for tool in tool_type_list %}
+      <a href="{% url 'tool' toolname tool %}">{{ tool|title }}</a> &nbsp;&nbsp;&nbsp;&nbsp;
+    {% endfor %}
+  {% endif %}
+  <p><a href="{{request.META.HTTP_REFERER|escape}}">Return</a></p>
+</center>
+{% endblock content %}

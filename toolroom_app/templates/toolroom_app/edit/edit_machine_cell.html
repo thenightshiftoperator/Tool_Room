@@ -1,0 +1,20 @@
+{% extends 'toolroom_app/root/base.html' %}
+
+{% block content %}
+  <p>Edit {{ current_cell.cell_name }}:</p>
+    <form action="{% url 'edit_machine_cell' cell.id %}" method='post'>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button name="submit">Save</button>
+    </form>
+    {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+              <li>
+                {{ message }}
+              </li>
+            </div>
+            {% endfor %}
+            {% endif %}
+
+{% endblock content %}

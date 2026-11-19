@@ -1,0 +1,13 @@
+{% extends 'toolroom_app/root/base.html' %}
+
+{% block content %}
+<center><header>{{ name|title }}</header>
+  <p>{% for i in model %}
+    {% if i.tool_type == name %}
+      <form action="{% url 'buy_tool' i.operation i.tool_type i.id %}" method='GET'>
+         {{ i.tool_type|title }}, {{ i.tool_diameter }}Ø
+        <button type='submit'>Select</button></form>
+    {% endif %}
+  {% endfor %}
+        <a href="{{request.META.HTTP_REFERER|escape}}">Return</a><center>
+{% endblock content %}

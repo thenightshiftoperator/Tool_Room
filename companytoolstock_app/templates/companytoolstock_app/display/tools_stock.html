@@ -1,0 +1,18 @@
+{% extends "toolroom_app/root/base.html" %}
+
+{% block content %}
+
+  <center><p>TOOLS STOCK MAIN PAGE IN CONSTRUCTION...</p>
+    {% if tool %}
+      {% for objects in tool %}
+        <a href="{% url 'display_tools_in_stock' objects %}"> {{ objects|title }} </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {% endfor %}
+    {% else %}
+      <p> NO TOOLS AVAILABLE. </p>
+    {% endif %}
+        <p><a href="{% url 'add_tool' %}">ADD TOOL<a/></p>
+        <p><a href="{% url 'seller_catalogue' %}">BUY TOOLS<a/></p>
+      <a href="{{request.META.HTTP_REFERER|escape}}">Return</a>
+  </center>
+
+{% endblock content %}

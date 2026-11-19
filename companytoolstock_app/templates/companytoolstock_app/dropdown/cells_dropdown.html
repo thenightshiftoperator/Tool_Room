@@ -1,0 +1,6 @@
+{% block content %}
+<option value="">---------</option>
+{% for cell in cells %}
+<option value="{{ cell.pk }}">{{ cell.cell_name }}</option>
+{% endfor %}
+{% endblock content %}

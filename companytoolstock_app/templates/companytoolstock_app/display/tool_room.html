@@ -1,0 +1,12 @@
+{% extends "toolroom_app/root/base.html" %}
+
+{% block content %}
+
+  <center><p>TOOL ROOM MAIN PAGE IN CONSTRUCTION...</p>
+    <p><a href="{% url 'tools_stock' %}">TOOLS STOCK<a/>&nbsp;&nbsp;&nbsp;
+    <a href="{% url 'tool_setup' %}">TOOL SETUP<a/>&nbsp;&nbsp;&nbsp;
+    <a href="{% url 'tools_requests' %}">TOOLS REQUESTS<a/>&nbsp;&nbsp;&nbsp;</p>
+    <a href="{{request.META.HTTP_REFERER|escape}}">Return</a>
+  </center>
+
+{% endblock content %}

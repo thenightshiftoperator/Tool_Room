@@ -1,0 +1,6 @@
+{% block content %}
+<option value="">---------</option>
+  {% for tool in tool_type %}
+    <option value="{{ tool.tool_material_capability }}">{{ tool.tool_material_capability }} </option>
+  {% endfor %}
+{% endblock content %}

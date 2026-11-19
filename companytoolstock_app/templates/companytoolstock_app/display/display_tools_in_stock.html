@@ -1,0 +1,34 @@
+{% extends "toolroom_app/root/base.html" %}
+
+{% block content %}
+  <a> {{ type|title }}s in stock </a>
+  {% if type == 'holder' %}
+    {% for type in object_types %}
+         <p> {{ type|title }} </p>
+        {% for object in objects %}
+          {% if object.type == type %}
+            <p>{{ object.type }} | {{ object.bt }} | {{ object.er }} | {{ object.a }} | qty: {{ object.quantity }} </p>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+  {% elif type == 'collet' %}
+    {% for type in object_types %}
+         <p> {{ type|title }} </p>
+        {% for object in objects %}
+          {% if object.type == type %}
+            <p>{{ object.type }} | {{ object.clamp_range }} | qty: {{ object.quantity }} </p>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+  {% elif type == 'tool' %}
+    {% for type in object_types %}
+         <p> {{ type|title }} </p>
+        {% for object in objects %}
+          {% if object.type == type %}
+            <p>{{ object.type }} | Material: {{ object.tool_material_capability }} | Diameter: {{ object.tool_diameter }} | {{ object.cutting_length }} | total length: {{ object.tool_total_length }} | qty: {{ object.quantity }} </p>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+  {% endif %}
+  <p><a href="{% url 'add_tool_to_stock' type %}">add {{ type }}<a/></p>
+{% endblock content %}

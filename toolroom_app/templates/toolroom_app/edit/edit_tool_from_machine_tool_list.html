@@ -1,0 +1,20 @@
+{% extends 'toolroom_app/root/base.html' %}
+
+{% block content %}
+  <p>Edit T{{machine_tool.tool_number}} - {{machine_tool.tools.tool_type}}</p>
+    <form action="{% url 'edit_tool_from_machine_tool_list' machine_tool.id machine.id %}" method='post'>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button name="submit">Save</button>
+    </form>
+    {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+              <li>
+                {{ message }}
+              </li>
+            </div>
+            {% endfor %}
+            {% endif %}
+
+{% endblock content %}

@@ -1,0 +1,15 @@
+{% extends "toolroom_app/root/base.html" %}
+
+{% block content %}
+<center><p>Floor Machine Sectors: </p>
+  <ul>
+    {% for sector in floor_sectors %}
+        <p><a href="{% url 'machine_cells' sector.id %}"> {{ sector }}<a/></p>
+    {% empty %}
+      <p>No Sectors have been added yet.</p>
+    {% endfor %}
+    <a href="{% url 'register_sector' %}">Add a new sector:</a>
+  </ul>
+  <p>" Main sectors of Manufacturing floor which require tooling management will be displayed here. "</p>
+</center>
+{% endblock content %}

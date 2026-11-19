@@ -1,0 +1,10 @@
+{% extends "toolroom_app/root/base.html" %}
+
+{% block content %}
+  <center>  <p>MACHINE PAGE IN DEVELOPMENT</p>
+    <p><a href="{% url 'edit_machine' machine.id %}">{{ machine.machine_name }}</a></p>
+    <p><a href="{% url 'machine_tool_list' machine.id %}">{{ machine.machine_name }} - Tool List</a></p>
+    <p>{{ machine.machine_name}} - Current Job</p>
+    <p>{{ machine.machine_name}} - Next Job</p>
+  </center>
+{% endblock content %}

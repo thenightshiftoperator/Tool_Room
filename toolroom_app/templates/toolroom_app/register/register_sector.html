@@ -1,0 +1,21 @@
+{% extends 'toolroom_app/root/base.html' %}
+
+{% block content %}
+  <p>Add a new sector:</p>
+
+  <form action="{% url 'register_sector' %}" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="submit">Add sector</button>
+  </form>
+  {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}">
+            <li>
+              {{ message }}
+            </li>
+          </div>
+        {% endfor %}
+      {% endif %}
+
+{% endblock content %}

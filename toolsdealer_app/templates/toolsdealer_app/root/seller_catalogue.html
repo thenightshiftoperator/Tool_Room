@@ -1,0 +1,9 @@
+{% extends 'toolroom_app/root/base.html' %}
+
+{% block content %}
+  <center><p>SELLER CATALOGUE</p>
+    {% for operation, type in tool_operation_choice %}
+      <a href="{% url 'tools' operation %}">{{ type|title }}<a/>&nbsp;&nbsp;&nbsp;&nbsp;
+    {% endfor %}
+    <p><a href="{{request.META.HTTP_REFERER|escape}}">Return</a></center></p>
+{% endblock content %}

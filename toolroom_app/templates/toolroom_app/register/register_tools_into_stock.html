@@ -1,0 +1,12 @@
+{% extends 'toolroom_app/root/base.html' %}
+
+{% block content %}
+  <p>Insert Tool into Companies's Tooling Database:</p>
+
+  <form action="{% url 'register_tools_into_stock'%}" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="submit">Register</button>
+  </form>
+
+{% endblock content %}

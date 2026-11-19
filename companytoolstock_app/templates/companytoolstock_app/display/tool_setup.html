@@ -1,0 +1,144 @@
+{% extends "toolroom_app/root/base.html" %}
+
+{% block content %}
+
+  <center><p>TOOLS SET UP PAGE IN CONSTRUCTION...</p>
+    <form method='post' id='ToolSetUpForm' data-machines-url="{% url 'tool_setup' %}">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Next</button>
+    </form>
+
+      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+      <script>
+        $("#id_sector").change(function () {
+          const url = $("#ToolSetUpForm").attr("data-cells-url");  // get the url of the `load_cities` view
+          const sectorId = $(this).val();  // get the selected country ID from the HTML input
+
+          $.ajax({                       // initialize an AJAX request
+            url: '{% url 'ajax_load_cells' %}',                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+            data: {
+              'sector_id': sectorId       // add the country id to the GET parameters
+            },
+            success: function (data) {   // `data` is the return of the `load_cities` view function
+              $("#id_cell").html(data);  // replace the contents of the city input with the data that came from the server
+              let html_data = '<option value="">---------</option>';
+                  data.forEach(function (cell) {
+                      html_data += `<option value="${cell.pk}">${cell.cell_name}</option>`
+                  });
+                  console.log(html_data);
+                  $("#id_cell").html(html_data);
+            }
+          });
+
+        });
+        $("#id_cell").change(function () {
+          var url = $("#ToolSetUpForm").attr("data-machines-url");  // get the url of the `load_cities` view
+          var cellId = $(this).val();  // get the selected country ID from the HTML input
+
+          $.ajax({                       // initialize an AJAX request
+            url: '{% url 'ajax_load_machines' %}',                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+            data: {
+              'cell_id': cellId       // add the country id to the GET parameters
+            },
+            success: function (data) {   // `data` is the return of the `load_cities` view function
+              $("#id_machine").html(data);  // replace the contents of the city input with the data that came from the server
+              let html_data = '<option value="">---------</option>';
+                  data.forEach(function (machine) {
+                      html_data += `<option value="${machine.pk}">${machine.machine_name}</option>`
+                  });
+                  console.log(html_data);
+                  $("#id_machine").html(html_data);
+            }
+          });
+
+        });
+        $("#id_holder_type").change(function () {
+          var url = $("#ToolSetUpForm").attr("data-holder-type-url");  // get the url of the `load_cities` view
+          var holderId = $(this).val();  // get the selected country ID from the HTML input
+
+          $.ajax({                       // initialize an AJAX request
+            url: '{% url 'ajax_load_holder_size' %}',                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+            data: {
+              'holder_type_id': holderId       // add the country id to the GET parameters
+            },
+            success: function (data) {   // `data` is the return of the `load_cities` view function
+              $("#id_holder_specs").html(data);  // replace the contents of the city input with the data that came from the server
+              let html_data = '<option value="">---------</option>';
+                  data.forEach(function (holder_specs) {
+                      html_data += `<option value="${holder_specs.pk}">${holder_specs.type}</option>`
+                  });
+                  console.log(html_data);
+                  $("#id_holder_specs").html(html_data);
+            }
+          });
+
+        });
+        $("#id_collet_type").change(function () {
+          var url = $("#ToolSetUpForm").attr("data-collet-type-url");  // get the url of the `load_cities` view
+          var colletId = $(this).val();  // get the selected country ID from the HTML input
+
+          $.ajax({                       // initialize an AJAX request
+            url: '{% url 'ajax_load_collet_specs' %}',                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+            data: {
+              'collet_type_id': colletId       // add the country id to the GET parameters
+            },
+            success: function (data) {   // `data` is the return of the `load_cities` view function
+              $("#id_collet_specs").html(data);  // replace the contents of the city input with the data that came from the server
+              let html_data = '<option value="">---------</option>';
+                  data.forEach(function (collet_specs) {
+                      html_data += `<option value="${collet_specs.pk}">${collet_specs.type}</option>`
+                  });
+                  console.log(html_data);
+                  $("#id_collet_specs").html(html_data);
+            }
+          });
+        });
+        $("#id_tool_type").change(function () {
+
+          var url = $("#ToolSetUpForm").attr("data-tool-type-url");  // get the url of the `load_cities` view
+          var toolId = $(this).val();  // get the selected country ID from the HTML input
+
+          $.ajax({                       // initialize an AJAX request
+            url: '{% url 'ajax_load_tool_specs' %}',                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+            data: {
+              'tool_type_type': toolId       //GET TYPE OF TOOL
+            },
+            success: function (data) {   // `data` is the return of the `load_cities` view function
+              $("#id_tool_specs").html(data);  // replace the contents of the city input with the data that came from the server
+              let html_data = '<option value="">---------</option>';
+                  data.forEach(function (tool_specs) {
+                      html_data += `<option value="${tool_specs.pk}">${tool_specs.tool_material_capability}</option>`
+                  });
+                  console.log(html_data);
+                  $("#id_tool_specs").html(html_data);
+            }
+          });
+        });
+        $("#id_tool_specs").change(function () {
+
+          var url = $("#ToolSetUpForm").attr("data-tool-specs-url");  // get the url of the `load_cities` view
+          var toolSpecsId = $(this).val();  // get the selected country ID from the HTML input
+
+          $.ajax({                       // initialize an AJAX request
+            url: '{% url 'ajax_load_tool_diameter' %}',                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+            data: {
+              'tool_specs_tool_material_capability': toolSpecsId       // add the country id to the GET parameters
+            },
+            success: function (data) {   // `data` is the return of the `load_cities` view function
+              $("#id_tool_diameter").html(data);  // replace the contents of the city input with the data that came from the server
+              let html_data = '<option value="">---------</option>';
+                  data.forEach(function (tool_diameter) {
+                      html_data += `<option value="${tool_diameter.pk}">${tool_diameter.tool_diameter}</option>`
+                  });
+                  console.log(html_data);
+                  $("#id_tool_diameter").html(html_data);
+            }
+          });
+        });
+      </script>
+
+    <p>SETUP STRUCTURE FORMS WILL BE DISPLAYED HERE</p>
+  </center>
+
+{% endblock content %}

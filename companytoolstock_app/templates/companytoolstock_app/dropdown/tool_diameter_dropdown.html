@@ -1,0 +1,6 @@
+{% block content %}
+<option value="">---------</option>
+{% for tool in tool_type %}
+<option value="{{ tool.pk }}">{{ tool.tool_diameter }} </option>
+{% endfor %}
+{% endblock content %}

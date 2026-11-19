@@ -1,0 +1,15 @@
+{% extends 'toolroom_app/root/base.html' %}
+
+{% block content %}
+  {% if ctsdb %}
+    <p>Buy {{ tool.tool_type|title }} - {{ tool.tool_diameter }} / Quantity in Company_name stock: {{ ctsdb.quantity }}</p>
+  {% else %}
+    <p>Buy {{ tool.tool_type|title }} - {{ tool.tool_diameter }} / Company_name stock qty: 0 </p>
+  {% endif %}
+
+  <form action="{% url 'buy_tool' tool.operation tool.tool_type tool.id %}" method='POST'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="submit">Buy</button>
+  </form>
+{% endblock content %}

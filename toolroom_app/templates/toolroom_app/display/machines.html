@@ -1,0 +1,18 @@
+{% extends "toolroom_app/root/base.html" %}
+
+{% block content %}
+  <center><p>Machines in {{ cell.cell_name }} - {{ cell.machines_sector }} -<a href="{% url 'edit_machine_cell' cell.id%}">Edit cell</a> </p>
+  <p>" Sketch of Machines in cell Shown HERE. "</p>
+  <ul>
+    {% for machine in machines %}
+      <p>
+        <a href="{% url 'machine' machine.id %}"> {{ machine }} <a/>
+      </p>
+    {% empty %}
+      <p>No Machines have been Registered yet.</p>
+    {% endfor %}
+    <a href="{% url 'register_machine' cell.id %}">Register Machine<a/>
+  </ul>
+  </center>
+
+{% endblock content %}

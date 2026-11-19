@@ -1,0 +1,29 @@
+.gitignore
+
+
+Paste this into it:
+
+# Python virtual environments
+venv/
+.venv/
+env/
+
+# Python temporary files
+__pycache__/
+*.py[cod]
+
+# Environment variables and secrets
+.env
+.env.*
+
+# Django temporary files
+staticfiles/
+*.log
+
+# IDE settings
+.vscode/
+.idea/
+
+# Operating system files
+.DS_Store
+Thumbs.db

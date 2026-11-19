@@ -1,0 +1,29 @@
+{% extends "toolroom_app/root/base.html" %}
+
+{% block content %}
+    <table>
+      <td>number</td>
+      <td>tool type</td>
+      <td>tool height</td>
+      <td>tool height (wear)</td>
+      <td>tool radius</td>
+      <td>tool radius (wear)</td>
+      <tr>
+        {% for pocket_number in magazine %}
+          {% if pocket_number != 0 %}
+            <td> {{ pocket_number }}</td>
+            {% for tool in machinetoollist %}
+              {% if tool.tool_number == pocket_number %}
+                <td><a href="{% url 'edit_tool_from_machine_tool_list' tool.id machine.id %}">{{ tool.tools.tool_type }}</a></td>
+                <td><a href="{% url 'edit_tool_from_machine_tool_list' tool.id machine.id %}">{{ tool.tool_height }}</a></td>
+                <td><a href="{% url 'edit_tool_from_machine_tool_list' tool.id machine.id %}">{{ tool.tool_height_wear }}</a></td>
+                <td><a href="{% url 'edit_tool_from_machine_tool_list' tool.id machine.id %}">{{ tool.tool_radius }}</a></td>
+                <td><a href="{% url 'edit_tool_from_machine_tool_list' tool.id machine.id %}">{{ tool.tool_radius_wear }}</a></td>
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        </tr>
+        {% endfor %}
+      </table>
+        <a href="{% url 'register_machine_tool_list' machine.id %}">Add Tool</a>
+{% endblock content %}

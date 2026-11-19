@@ -1,0 +1,6 @@
+{% block content %}
+<option value="">---------</option>
+{% for collet in collet_type %}
+<option value="{{ collet.pk }}">Clamp range: {{ collet.clamp_range }}</option>
+{% endfor %}
+{% endblock content %}

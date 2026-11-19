@@ -1,0 +1,17 @@
+{% extends "toolroom_app/root/base.html" %}
+
+{% block content %}
+<center><p>{{ machine_sector.sector }} cells Sketch: </p>
+  <p>" Sketch of Floor cells Shown HERE. "</p>
+
+  <ul>
+    {% for cell in cells %}
+        <p><a href="{% url 'machines' cell.id %}"> {{ cell }}<a/></p>
+    {% empty %}
+      <p>No cells have been created yet.</p>
+    {% endfor %}
+    <a href="{% url 'register_machine_cell' machine_sector.id %}">Add a new Cell:</a>
+  </ul>
+  </center>
+
+{% endblock content %}

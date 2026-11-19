@@ -1,0 +1,10 @@
+{% block content %}
+
+  <center><p>TOOLS SET UP PAGE IN CONSTRUCTION...</p>
+    <form method='post' id='ToolSetUpForm' data-machines-url="{% url 'tool_root_setup' location %}">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Next</button>
+    </form>
+
+    {% endblock content %}

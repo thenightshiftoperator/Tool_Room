@@ -1,0 +1,6 @@
+{% block content %}
+<option value="">---------</option>
+{% for holder in holder_type %}
+<option value="{{ holder.pk }}">{{ holder.bt }} | {{ holder.er }} | A: {{ holder.a }} | Clamp range: {{ holder.clamp_range }}</option>
+{% endfor %}
+{% endblock content %}
